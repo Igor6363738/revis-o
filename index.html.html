@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão de Matemática EJA</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 12px; }
+        h1 { text-align: center; color: #1a73e8; font-size: 22px; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 20px; }
+        .section-title { background: #1a73e8; color: white; padding: 10px; border-radius: 8px; font-size: 16px; margin-top: 25px; margin-bottom: 15px; }
+        .card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        h3 { color: #2c3e50; font-size: 15px; margin-top: 0; line-height: 1.4; }
+        p { font-size: 14px; line-height: 1.5; color: #555; }
+        .manipulacao { background: #f8f9fa; border: 1px solid #e9ecef; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+        label { font-size: 13px; font-weight: bold; color: #495057; }
+        input[type="range"] { width: 100%; margin: 8px 0 15px 0; }
+        .painel-resultado { background: #e8f0fe; padding: 8px; border-radius: 6px; font-weight: bold; text-align: center; color: #1a73e8; font-size: 14px; }
+        .alternativas { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .btn-opcao { background-color: #ffffff; color: #333; border: 1px solid #ced4da; padding: 10px; border-radius: 6px; font-size: 14px; text-align: left; cursor: pointer; transition: all 0.2s; }
+        .btn-opcao.selecionada { background-color: #d2e3fc; border-color: #1a73e8; color: #174ea6; font-weight: bold; }
+        .container-figura { display: flex; justify-content: center; align-items: center; margin: 10px 0; background: #fff; border: 1px dashed #ccc; border-radius: 6px; }
+        .form-envio { background: #e8f0fe; border: 2px solid #1a73e8; border-radius: 12px; padding: 15px; margin-top: 30px; }
+        .form-envio input[type="text"] { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; }
+        .btn-enviar { background-color: #1a73e8; color: white; border: none; padding: 14px; width: 100%; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>📱 Revisão Interativa de Matemática</h1>
+    <div class="subtitle">EJA - Use os simuladores e responda às questões</div>
+
+    <div class="section-title">🛒 Módulo 1: Porcentagem no Cotidiano</div>
+    <div class="manipulacao">
+        <label>🔧 CONTRUTOR DE DESCONTOS</label>
+        <input type="range" id="sliderP1" min="0" max="30" value="0" step="5" oninput="simularPorcentagem()">
+        <div class="painel-resultado">
+            Taxa de <span id="txtPorcentagem">0</span>%:<br>
+            • Desconto em R$ 2.000,00 = R$ <span id="calcPreco1">0,00</span><br>
+            • Desconto em R$ 120,00 = R$ <span id="calcPreco2">0,00</span>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q1: Geladeira de R$ 2.000,00 com 10% de desconto. Qual o abatimento?</h3>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q1', 'A', this)">A) R$ 10,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q1', 'B', this)">B) R$ 100,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q1', 'C', this)">C) R$ 200,00</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q2: Calça de R$ 120,00 com 15% de desconto via PIX. Qual a economia?</h3>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'A', this)">A) R$ 15,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'B', this)">B) R$ 18,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'C', this)">C) R$ 20,00</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q3: Aumento salarial de 8% para quem ganha R$ 1.500,00. Qual o aumento?</h3>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q3', 'A', this)">A) R$ 80,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q3', 'B', this)">B) R$ 120,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q3', 'C', this)">C) R$ 150,00</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q4: Cashback de 5% em compra de R$ 400,00. Quanto volta?</h3>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q4', 'A', this)">A) R$ 5,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q4', 'B', this)">B) R$ 20,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q4', 'C', this)">C) R$ 40,00</button>
+        </div>
+    </div>
+
+    <div class="section-title">🏦 Módulo 2: Juros Simples e Finanças</div>
+    <div class="manipulacao">
+        <label>🔧 MAQUINA DO TEMPO DOS JUROS</label>
+        <input type="range" id="sliderM1" min="1" max="6" value="1" oninput="simularJuros()">
+        <div class="painel-resultado">
+            Simulação para <span id="txtMeses">1</span> mês(es):<br>
+            • R$ 500,00 (3% ao mês) = R$ <span id="calcJuros1">15,00</span> de juros<br>
+            • R$ 200,00 (2% ao mês) = R$ <span id="calcJuros2">4,00</span> de juros
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q5: Seu João atrasou R$ 500,00 por 2 meses (3% ao mês). Qual o juros?</h3>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q5', 'A', this)">A) R$ 15,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q5', 'B', this)">B) R$ 30,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q5', 'C', this)">C) R$ 530,00</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q6: R$ 200,00 com 3 meses de atraso (2% ao mês). Qual o juros?</h3>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'A', this)">A) R$ 4,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'B', this)">B) R$ 6,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'C', this)">C) R$ 12,00</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q7: Empréstimo de R$ 1.000,00 por 4 meses (5% ao mês). Juros final?</h3>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'A', this)">A) R$ 50,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'B', this)">B) R$ 200,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'C', this)">C) R$ 1.200,00</button>
+        </div>
+    </div>
+
+    <div class="section-title">📐 Módulo 3: Perímetro (Laboratório Visual)</div>
+    <div class="card">
+        <h3>Q8: Janela retangular com 2m de largura e 1m de altura. Quantos metros de moldura?</h3>
+        <div class="manipulacao">
+            <label>Largura: <span id="valLargura">2</span>m</label>
+            <input type="range" id="sliderLargura" min="1" max="5" value="2" oninput="calcularRetangulo()">
+            <label>Altura: <span id="valAltura">1</span>m</label>
+            <input type="range" id="sliderAltura" min="1" max="5" value="1" oninput="calcularRetangulo()">
+            <div class="container-figura" style="height: 140px;">
+                <div id="desenhoRetangulo" style="background-color: #2ecc71; border: 2px solid #27ae60; width: 60px; height: 30px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">Janela</div>
+            </div>
+            <div class="painel-resultado">
+                Conta: <span id="contaRetangulo">2 + 2 + 1 + 1</span><br>
+                Perímetro = <span id="resultadoRetangulo" style="font-size: 18px;">6</span> metros
+            </div>
+        </div>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'A', this)">A) 3 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'B', this)">B) 4 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'C', this)">C) 6 metros</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q9: Sala quadrada, cada parede tem 4m. Qual o perímetro?</h3>
+        <div class="manipulacao">
+            <label>Tamanho do Lado: <span id="valQuadrado">4</span>m</label>
+            <input type="range" id="sliderQuadrado" min="1" max="6" value="4" oninput="calcularQuadrado()">
+            <div class="container-figura" style="height: 140px;">
+                <div id="desenhoQuadrado" style="background-color: #9b59b6; border: 2px solid #8e44ad; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">Sala</div>
+            </div>
+            <div class="painel-resultado">
+                Conta: <span id="contaQuadrado">4 + 4 + 4 + 4</span><br>
+                Perímetro = <span id="resultadoQuadrado" style="font-size: 18px;">16</span> metros
+            </div>
+        </div>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q9', 'A', this)">A) 8 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q9', 'B', this)">B) 16 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q9', 'C', this)">C) 20 metros</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Q10: Canteiro triangular com lados de 3m, 4m e 5m. Quantos metros de tela?</h3>
+        <div class="manipulacao">
+            <label>Lado 1: <span id="valTri1">3</span>m</label>
+            <input type="range" id="sliderTri1" min="1" max="8" value="3" oninput="calcularTriangulo()">
+            <label>Lado 2: <span id="valTri2">4</span>m</label>
+            <input type="range" id="sliderTri2" min="1" max="8" value="4" oninput="calcularTriangulo()">
+            <label>Lado 3: <span id="valTri3">5</span>m</label>
+            <input type="range" id="sliderTri3" min="1" max="8" value="5" oninput="calcularTriangulo()">
+            <div class="painel-resultado" style="margin-top: 15px; background: #fce8e6; color: #d93025;">
+                Conta: <span id="contaTriangulo">3 + 4 + 5</span><br>
+                Perímetro = <span id="resultadoTriangulo" style="font-size: 18px;">12</span> metros
+            </div>
+        </div>
+        <div class="alternativas">
+            <button class="btn-opcao" onclick="selecionarOpcao('q10', 'A', this)">A) 7 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q10', 'B', this)">B) 12 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q10', 'C', this)">C) 15 metros</button>
+        </div>
+    </div>
+
+    <div class="form-envio">
+        <h2>📊 Enviar para o Professor</h2>
+        <p>Preencha seu nome e clique no botão para salvar suas respostas na planilha!</p>
+        <label>Nome Completo do Aluno:</label>
+        <input type="text" id="nomeAluno" placeholder="Escreva seu nome aqui..." required>
+        <button onclick="enviarParaPlanilha()" id="btnEnviarPlanilha" class="btn-enviar">🚀 Enviar Respostas Agora</button>
+    </div>
+
+    <script>
+        const respostasAluno = { q1: '', q2: '', q3: '', q4: '', q5: '', q6: '', q7: '', q8: '', q9: '', q10: '' };
+
+        function selecionarOpcao(questao, alternativa, elemento) {
+            respostasAluno[questao] = alternativa;
+            const botoes = elemento.parentElement.querySelectorAll('.btn-opcao');
+            botoes.forEach(btn => btn.classList.remove('selecionada'));
+            elemento.classList.add('selecionada');
+        }
+
+        function simularPorcentagem() {
+            let taxa = document.getElementById("sliderP1").value;
+            document.getElementById("txtPorcentagem").innerText = taxa;
+            document.getElementById("calcPreco1").innerText = ((taxa / 100) * 2000).toFixed(2).replace('.', ',');
+            document.getElementById("calcPreco2").innerText = ((taxa / 100) * 120).toFixed(2).replace('.', ',');
+        }
+
+        function simularJuros() {
+            let meses = document.getElementById("sliderM1").value;
+            document.getElementById("txtMeses").innerText = meses;
+            document.getElementById("calcJuros1").innerText = (500 * 0.03 * meses).toFixed(2).replace('.', ',');
+            document.getElementById("calcJuros2").innerText = (200 * 0.02 * meses).toFixed(2).replace('.', ',');
+        }
+
+        function calcularRetangulo() {
+            let larg = parseInt(document.getElementById("sliderLargura").value);
+            let alt = parseInt(document.getElementById("sliderAltura").value);
+            document.getElementById("valLargura").innerText = larg;
+            document.getElementById("valAltura").innerText = alt;
+            let fig = document.getElementById("desenhoRetangulo");
+            fig.style.width = (larg * 30) + "px";
+            fig.style.height = (alt * 30) + "px";
+            document.getElementById("contaRetangulo").innerText = larg + " + " + larg + " + " + alt + " + " + alt;
+            document.getElementById("resultadoRetangulo").innerText = larg + larg + alt + alt;
+        }
+
+        function calcularQuadrado() {
+            let lado = parseInt(document.getElementById("sliderQuadrado").value);
+            document.getElementById("valQuadrado").innerText = lado;
+            let fig = document.getElementById("desenhoQuadrado");
+            fig.style.width = (lado * 20) + "px";
+            fig.style.height = (lado * 20) + "px";
+            document.getElementById("contaQuadrado").innerText = lado + " + " + lado + " + " + lado + " + " + lado;
+            document.getElementById("resultadoQuadrado").innerText = lado * 4;
+        }
+
+        function calcularTriangulo() {
+            let l1 = parseInt(document.getElementById("sliderTri1").value);
+            let l2 = parseInt(document.getElementById("sliderTri2").value);
+            let l3 = parseInt(document.getElementById("sliderTri3").value);
+            document.getElementById("valTri1").innerText = l1;
+            document.getElementById("valTri2").innerText = l2;
+            document.getElementById("valTri3").innerText = l3;
+            document.getElementById("contaTriangulo").innerText = l1 + " + " + l2 + " + " + l3;
+            document.getElementById("resultadoTriangulo").innerText = l1 + l2 + l3;
+        }
+
+        function enviarParaPlanilha() {
+            const nome = document.getElementById('nomeAluno').value;
+            const botao = document.getElementById('btnEnviarPlanilha');
+            
+            if (!nome) { alert("Por favor, digite seu nome antes de enviar!"); return; }
+            for (let i = 1; i <= 10; i++) {
+                if (!respostasAluno['q' + i]) { alert('Por favor, responda a Questão ' + i + ' antes de enviar!'); return; }
+            }
+
+            botao.innerText = "Enviando... Aguarde";
+            botao.disabled = true;
+
+            // ===== ATENÇÃO: COLE A SUA URL AQUI NESTA LINHA ABAIXO =====
+            const urlPlanilha = "https://script.google.com/macros/s/AKfycbwiAD4Bvyj_NPQgkAmTDfarUpS6Ws3prVwD-0CCkynA_dj-MSsm1fxMsOp4AHxVfXy7qw/exec";
+
+            const dadosForm = new URLSearchParams();
+            dadosForm.append('nome', nome);
+            for (let i = 1; i <= 10; i++) { dadosForm.append('q'+i, respostasAluno['q'+i]); }
+
+            fetch(urlPlanilha, { method: 'POST', body: dadosForm, mode: 'no-cors' })
+            .then(() => {
+                alert("🎉 Perfeito! Respostas salvas na planilha do professor.");
+                botao.innerText = "🚀 Enviado com Sucesso!";
+                botao.style.backgroundColor = "#34a853";
+            })
+            .catch(() => {
+                alert("Erro ao enviar. Tente novamente.");
+                botao.innerText = "🚀 Enviar Respostas Agora";
+                botao.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
