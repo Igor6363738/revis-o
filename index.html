@@ -14,15 +14,23 @@
         .formula { background: #ffeeba; padding: 5px 10px; border-radius: 4px; font-family: monospace; font-size: 15px; font-weight: bold; color: #856404; display: inline-block; margin: 5px 0; }
         .card { background: white; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); border-top: 3px solid #1a73e8; }
         h3 { color: #2c3e50; font-size: 15px; margin-top: 0; line-height: 1.5; font-weight: 600; }
+        
+        /* Estilos do Simulador */
         .manipulacao { background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
-        .manipulacao-title { font-size: 13px; font-weight: bold; color: #495057; text-transform: uppercase; margin-bottom: 10px; display: block; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        .dica-logica { font-size: 13px; color: #d93025; background: #fce8e6; padding: 8px; border-radius: 4px; margin-top: 10px; font-weight: 500; }
-        label { font-size: 14px; color: #555; }
-        input[type="range"] { width: 100%; margin: 10px 0 15px 0; accent-color: #1a73e8; }
-        .painel-resultado { background: #e8f0fe; padding: 12px; border-radius: 6px; font-weight: bold; text-align: center; color: #1a73e8; font-size: 15px; border: 1px dashed #1a73e8; }
-        .alternativas { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .manipulacao-title { font-size: 14px; font-weight: bold; color: #495057; text-transform: uppercase; margin-bottom: 15px; display: block; border-bottom: 2px solid #dee2e6; padding-bottom: 8px; }
+        .slider-group { margin-bottom: 15px; }
+        .slider-group label { font-size: 14px; color: #333; font-weight: 500; display: flex; justify-content: space-between; }
+        .slider-group span { color: #1a73e8; font-weight: bold; }
+        input[type="range"] { width: 100%; margin: 8px 0; accent-color: #1a73e8; }
+        
+        .painel-resultado { background: #e8f0fe; padding: 15px; border-radius: 6px; font-size: 15px; border: 1px dashed #1a73e8; margin-top: 10px; }
+        .painel-resultado div { margin-bottom: 5px; }
+        .destaque-resultado { font-size: 18px; font-weight: bold; color: #1a73e8; display: block; margin-top: 5px;}
+        
+        .alternativas { display: flex; flex-direction: column; gap: 8px; margin-top: 15px; }
         .btn-opcao { background-color: #ffffff; color: #333; border: 1px solid #ced4da; padding: 12px; border-radius: 6px; font-size: 15px; text-align: left; cursor: pointer; transition: all 0.2s; }
         .btn-opcao.selecionada { background-color: #d2e3fc; border-color: #1a73e8; color: #174ea6; font-weight: bold; box-shadow: 0 0 0 2px #1a73e8; }
+        
         .container-figura { display: flex; justify-content: center; align-items: center; margin: 15px 0; background: #fff; border: 1px dashed #ccc; border-radius: 6px; padding: 10px; }
         .form-envio { background: #e8f0fe; border: 2px solid #1a73e8; border-radius: 12px; padding: 20px; margin-top: 40px; margin-bottom: 40px; }
         .form-envio input[type="text"] { width: 100%; padding: 12px; margin-top: 8px; margin-bottom: 20px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
@@ -32,25 +40,31 @@
 <body>
 
     <h1>📱 Revisão Interativa de Matemática</h1>
-    <div class="subtitle">EJA - Explore os simuladores, revise a teoria e marque as respostas.</div>
+    <div class="subtitle">EJA - Modele os problemas nos simuladores e marque as respostas.</div>
 
     <div class="section-title">🛒 Módulo 1: Porcentagem no Dia a Dia</div>
     
     <div class="revisao-card">
         <h4>📚 Resumo Rápido: Porcentagem</h4>
-        <p>Porcentagem significa "dividir por 100". Usamos para calcular descontos, juros e aumentos.</p>
-        <div class="formula">Valor = (Taxa ÷ 100) × Preço Total</div>
-        <p><em>Exemplo: 10% de R$ 200 = (10 ÷ 100) × 200 = R$ 20,00</em></p>
+        <p>Porcentagem significa "dividir por 100". Modele os problemas abaixo arrastando os controles para os valores do enunciado.</p>
     </div>
 
     <div class="card">
-        <h3>Q1: Dona Ana quer comprar uma geladeira de R$ 2.000,00. A loja oferece 10% de desconto à vista. Quantos reais ela terá de abatimento no valor final?</h3>
+        <h3>Q1: Dona Ana quer comprar uma geladeira de R$ 2.000,00. A loja oferece 10% de desconto à vista. Quantos reais ela terá de abatimento (desconto) no valor final?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Auxiliar de Cálculo</span>
-            <label>Qual porcentagem você quer calcular? <span id="valQ1">10</span>%</label>
-            <input type="range" id="sliderQ1" min="1" max="20" step="1" value="10" oninput="calcQ1()">
-            <div class="dica-logica">Passo 1: Sabemos que 1% de R$ 2.000 é <b>R$ 20,00</b>.</div>
-            <div class="painel-resultado">Para <span id="lblQ1">10</span>%, a conta é: <b>20 × <span id="multQ1">10</span></b></div>
+            <span class="manipulacao-title">🔧 Simulador: Descobrir o Valor do Desconto</span>
+            <div class="slider-group">
+                <label>Valor do Produto: <span>R$ <span id="valQ1_prod">1000</span>,00</span></label>
+                <input type="range" id="sliderQ1_prod" min="500" max="3000" step="100" value="1000" oninput="calcQ1()">
+            </div>
+            <div class="slider-group">
+                <label>Taxa de Desconto (%): <span><span id="valQ1_taxa">5</span>%</span></label>
+                <input type="range" id="sliderQ1_taxa" min="1" max="50" step="1" value="5" oninput="calcQ1()">
+            </div>
+            <div class="painel-resultado">
+                <div>Abatimento (Desconto): <span class="destaque-resultado">R$ <span id="resQ1_desc">50,00</span></span></div>
+                <div style="font-size: 13px; color: #666; margin-top: 8px;">Novo Valor a Pagar: R$ <span id="resQ1_final">950,00</span></div>
+            </div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q1', 'A', this)">A) R$ 10,00</button>
@@ -60,29 +74,43 @@
     </div>
 
     <div class="card">
-        <h3>Q2: Carlos viu uma calça jeans que custa R$ 120,00. Se ele pagar no PIX, ganha 15% de desconto. Qual será a economia dele em reais?</h3>
+        <h3>Q2: Carlos viu uma calça jeans que custava R$ 120,00. O vendedor deu um desconto em dinheiro de R$ 18,00. Qual foi a porcentagem (%) de desconto que ele ganhou?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Auxiliar de Cálculo</span>
-            <label>Qual porcentagem você quer calcular? <span id="valQ2">15</span>%</label>
-            <input type="range" id="sliderQ2" min="1" max="30" step="1" value="15" oninput="calcQ2()">
-            <div class="dica-logica">Passo 1: Sabemos que 1% de R$ 120 é <b>R$ 1,20</b>.</div>
-            <div class="painel-resultado">Para <span id="lblQ2">15</span>%, a conta é: <b>1,20 × <span id="multQ2">15</span></b></div>
+            <span class="manipulacao-title">🔧 Simulador: Descobrir a Porcentagem (%)</span>
+            <div class="slider-group">
+                <label>Valor Original: <span>R$ <span id="valQ2_prod">100</span>,00</span></label>
+                <input type="range" id="sliderQ2_prod" min="50" max="300" step="10" value="100" oninput="calcQ2()">
+            </div>
+            <div class="slider-group">
+                <label>Desconto em Reais: <span>R$ <span id="valQ2_reais">10</span>,00</span></label>
+                <input type="range" id="sliderQ2_reais" min="1" max="50" step="1" value="10" oninput="calcQ2()">
+            </div>
+            <div class="painel-resultado">
+                <div>Esse desconto representa: <span class="destaque-resultado" style="color: #28a745;"><span id="resQ2_pct">10</span>%</span></div>
+            </div>
         </div>
         <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'A', this)">A) R$ 15,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'B', this)">B) R$ 18,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'C', this)">C) R$ 20,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'A', this)">A) 10%</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'B', this)">B) 15%</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q2', 'C', this)">C) 20%</button>
         </div>
     </div>
 
     <div class="card">
         <h3>Q3: Uma empresa concedeu um aumento salarial de 8% para todos os funcionários. Se um trabalhador ganha R$ 1.500,00, de quanto será o aumento no salário dele?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Auxiliar de Cálculo</span>
-            <label>Qual porcentagem de aumento? <span id="valQ3">8</span>%</label>
-            <input type="range" id="sliderQ3" min="1" max="15" step="1" value="8" oninput="calcQ3()">
-            <div class="dica-logica">Passo 1: Sabemos que 1% de R$ 1.500 é <b>R$ 15,00</b>.</div>
-            <div class="painel-resultado">Para <span id="lblQ3">8</span>%, a conta é: <b>15 × <span id="multQ3">8</span></b></div>
+            <span class="manipulacao-title">🔧 Simulador: Calcular Aumento/Acréscimo</span>
+            <div class="slider-group">
+                <label>Valor Inicial: <span>R$ <span id="valQ3_prod">1000</span>,00</span></label>
+                <input type="range" id="sliderQ3_prod" min="500" max="3000" step="100" value="1000" oninput="calcQ3()">
+            </div>
+            <div class="slider-group">
+                <label>Taxa de Aumento (%): <span><span id="valQ3_taxa">5</span>%</span></label>
+                <input type="range" id="sliderQ3_taxa" min="1" max="20" step="1" value="5" oninput="calcQ3()">
+            </div>
+            <div class="painel-resultado">
+                <div>Valor do Aumento: <span class="destaque-resultado" style="color: #d93025;">+ R$ <span id="resQ3_aumento">50,00</span></span></div>
+            </div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q3', 'A', this)">A) R$ 80,00</button>
@@ -91,38 +119,33 @@
         </div>
     </div>
 
-    <div class="card">
-        <h3>Q4: Fátima fez compras de supermercado no valor de R$ 400,00. O aplicativo do cartão devolve 5% do valor em dinheiro (cashback). Quanto ela receberá de volta?</h3>
-        <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Auxiliar de Cálculo</span>
-            <label>Qual porcentagem de cashback? <span id="valQ4">5</span>%</label>
-            <input type="range" id="sliderQ4" min="1" max="15" step="1" value="5" oninput="calcQ4()">
-            <div class="dica-logica">Passo 1: Sabemos que 1% de R$ 400 é <b>R$ 4,00</b>.</div>
-            <div class="painel-resultado">Para <span id="lblQ4">5</span>%, a conta é: <b>4 × <span id="multQ4">5</span></b></div>
-        </div>
-        <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q4', 'A', this)">A) R$ 5,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q4', 'B', this)">B) R$ 20,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q4', 'C', this)">C) R$ 40,00</button>
-        </div>
-    </div>
-
     <div class="section-title">🏦 Módulo 2: Juros e Finanças</div>
 
     <div class="revisao-card">
         <h4>📚 Resumo Rápido: Juros Simples</h4>
-        <p>Juros é o valor cobrado pelo aluguel do dinheiro (atrasos ou empréstimos). Ele multiplica pelo tempo.</p>
-        <div class="formula">Juros = Capital × (Taxa ÷ 100) × Tempo</div>
+        <p>Ajuste o capital (valor da dívida), a taxa e os meses para simular a geração de juros no tempo.</p>
     </div>
 
     <div class="card">
-        <h3>Q5: Seu João tem uma dívida de R$ 500,00 que atrasou por 2 meses. A loja cobra 3% de juros ao mês. Qual o valor total apenas dos juros gerados?</h3>
+        <h3>Q5: Seu João tem uma dívida de R$ 500,00 que atrasou por 2 meses. A loja cobra 3% de juros ao mês. Qual o valor total APENAS dos juros gerados?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Auxiliar de Cálculo (Juros no Tempo)</span>
-            <label>Meses de Atraso: <span id="valQ5">2</span> mês(es)</label>
-            <input type="range" id="sliderQ5" min="1" max="10" value="2" oninput="calcQ5()">
-            <div class="dica-logica">Passo 1: 3% de R$ 500 é <b>R$ 15,00 por mês</b>.</div>
-            <div class="painel-resultado">Para <span id="lblQ5">2</span> meses, a conta é: <b>15 × <span id="multQ5">2</span></b></div>
+            <span class="manipulacao-title">🔧 Laboratório de Juros Simples</span>
+            <div class="slider-group">
+                <label>Valor da Dívida (Capital): <span>R$ <span id="valQ5_cap">100</span>,00</span></label>
+                <input type="range" id="sliderQ5_cap" min="100" max="1000" step="100" value="100" oninput="calcJuros('Q5')">
+            </div>
+            <div class="slider-group">
+                <label>Taxa de Juros ao Mês: <span><span id="valQ5_taxa">1</span>%</span></label>
+                <input type="range" id="sliderQ5_taxa" min="1" max="10" step="1" value="1" oninput="calcJuros('Q5')">
+            </div>
+            <div class="slider-group">
+                <label>Tempo (Meses): <span><span id="valQ5_tempo">1</span> mês(es)</span></label>
+                <input type="range" id="sliderQ5_tempo" min="1" max="12" step="1" value="1" oninput="calcJuros('Q5')">
+            </div>
+            <div class="painel-resultado" style="border-color: #f29900; background-color: #fef7e0;">
+                <div style="color: #b06000;">Juros Acumulados: <span class="destaque-resultado" style="color: #ea4335;">R$ <span id="resQ5_juros">1,00</span></span></div>
+                <div style="font-size: 13px; color: #666; margin-top: 8px;">Valor Total da Dívida: R$ <span id="resQ5_total">101,00</span></div>
+            </div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q5', 'A', this)">A) R$ 15,00</button>
@@ -132,53 +155,46 @@
     </div>
 
     <div class="card">
-        <h3>Q6: Um boleto de luz de R$ 200,00 ficou atrasado por 3 meses. A multa é de juros simples de 2% ao mês. Quanto o morador pagará de juros?</h3>
+        <h3>Q6: Mariana pegou R$ 1.000,00 emprestados por 4 meses, com taxa de 5% ao mês. No final do prazo, quanto ela terá pago APENAS de juros?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Auxiliar de Cálculo (Juros no Tempo)</span>
-            <label>Meses de Atraso: <span id="valQ6">3</span> mês(es)</label>
-            <input type="range" id="sliderQ6" min="1" max="6" value="3" oninput="calcQ6()">
-            <div class="dica-logica">Passo 1: 2% de R$ 200 é <b>R$ 4,00 por mês</b>.</div>
-            <div class="painel-resultado">Para <span id="lblQ6">3</span> meses, a conta é: <b>4 × <span id="multQ6">3</span></b></div>
+            <span class="manipulacao-title">🔧 Laboratório de Juros Simples</span>
+            <div class="slider-group">
+                <label>Valor Emprestado: <span>R$ <span id="valQ6_cap">500</span>,00</span></label>
+                <input type="range" id="sliderQ6_cap" min="500" max="2000" step="100" value="500" oninput="calcJuros('Q6')">
+            </div>
+            <div class="slider-group">
+                <label>Taxa de Juros ao Mês: <span><span id="valQ6_taxa">2</span>%</span></label>
+                <input type="range" id="sliderQ6_taxa" min="1" max="10" step="1" value="2" oninput="calcJuros('Q6')">
+            </div>
+            <div class="slider-group">
+                <label>Tempo (Meses): <span><span id="valQ6_tempo">2</span> mês(es)</span></label>
+                <input type="range" id="sliderQ6_tempo" min="1" max="12" step="1" value="2" oninput="calcJuros('Q6')">
+            </div>
+            <div class="painel-resultado" style="border-color: #f29900; background-color: #fef7e0;">
+                <div style="color: #b06000;">Juros Acumulados: <span class="destaque-resultado" style="color: #ea4335;">R$ <span id="resQ6_juros">20,00</span></span></div>
+            </div>
         </div>
         <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'A', this)">A) R$ 4,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'B', this)">B) R$ 6,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'C', this)">C) R$ 12,00</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Q7: Mariana pegou R$ 1.000,00 emprestados por 4 meses, com taxa de 5% ao mês. No final do prazo, quanto ela terá pago APENAS de juros?</h3>
-        <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Auxiliar de Cálculo (Juros no Tempo)</span>
-            <label>Prazo do Empréstimo: <span id="valQ7">4</span> mês(es)</label>
-            <input type="range" id="sliderQ7" min="1" max="12" value="4" oninput="calcQ7()">
-            <div class="dica-logica">Passo 1: 5% de R$ 1.000 é <b>R$ 50,00 por mês</b>.</div>
-            <div class="painel-resultado">Para <span id="lblQ7">4</span> meses, a conta é: <b>50 × <span id="multQ7">4</span></b></div>
-        </div>
-        <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'A', this)">A) R$ 50,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'B', this)">B) R$ 200,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'C', this)">C) R$ 1.200,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'A', this)">A) R$ 50,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'B', this)">B) R$ 200,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'C', this)">C) R$ 1.200,00</button>
         </div>
     </div>
 
     <div class="section-title">📐 Módulo 3: O Que é Perímetro?</div>
 
-    <div class="revisao-card" style="border-left-color: #28a745; background-color: #d4edda;">
-        <h4 style="color: #155724;">📚 Resumo Rápido: Perímetro vs Área</h4>
-        <p><strong>Atenção:</strong> Não confunda com área (o espaço dentro)! O <strong>Perímetro</strong> é apenas o tamanho da "cerca", o contorno. A conta é muito simples:</p>
-        <div class="formula" style="background: #c3e6cb; color: #155724;">Perímetro = SOMA DE TODOS OS LADOS</div>
-    </div>
-
     <div class="card">
         <h3>Q8: O pedreiro Marcos vai colocar rodapé no contorno de uma pequena sala retangular. A sala tem 2 metros de largura por 1 metro de comprimento. Quantos metros de rodapé ele vai usar no total?</h3>
         <div class="manipulacao">
             <span class="manipulacao-title">🔧 Laboratório de Contorno (Retângulo)</span>
-            <label>Largura: <span id="valLargura">2</span>m</label>
-            <input type="range" id="sliderLargura" min="1" max="5" value="2" oninput="calcularRetangulo()">
-            <label>Comprimento: <span id="valAltura">1</span>m</label>
-            <input type="range" id="sliderAltura" min="1" max="5" value="1" oninput="calcularRetangulo()">
+            <div class="slider-group">
+                <label>Largura: <span><span id="valLargura">2</span>m</span></label>
+                <input type="range" id="sliderLargura" min="1" max="5" value="2" oninput="calcularRetangulo()">
+            </div>
+            <div class="slider-group">
+                <label>Comprimento: <span><span id="valAltura">1</span>m</span></label>
+                <input type="range" id="sliderAltura" min="1" max="5" value="1" oninput="calcularRetangulo()">
+            </div>
             
             <div class="container-figura" style="height: 140px;">
                 <svg id="svgRetangulo" width="60" height="30">
@@ -186,63 +202,13 @@
                 </svg>
             </div>
             <div class="painel-resultado">
-                Para achar o perímetro, calcule: <br><span id="contaRetangulo" style="font-size: 18px;">2 + 2 + 1 + 1</span>
+                Para achar o perímetro, some todos os lados: <br><span class="destaque-resultado" id="contaRetangulo">2 + 2 + 1 + 1</span>
             </div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q8', 'A', this)">A) 3 metros</button>
             <button class="btn-opcao" onclick="selecionarOpcao('q8', 'B', this)">B) 4 metros</button>
             <button class="btn-opcao" onclick="selecionarOpcao('q8', 'C', this)">C) 6 metros</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Q9: Dona Lúcia quer cercar uma horta quadrada com tela. Cada lado da horta mede exatos 4 metros. Quantos metros de tela ela precisa comprar para dar a volta completa?</h3>
-        <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Laboratório de Contorno (Quadrado)</span>
-            <label>Tamanho do Lado: <span id="valQuadrado">4</span>m</label>
-            <input type="range" id="sliderQuadrado" min="1" max="8" value="4" oninput="calcularQuadrado()">
-            
-            <div class="container-figura" style="height: 140px;">
-                <svg id="svgQuadrado" width="80" height="80">
-                    <rect width="100%" height="100%" fill="none" stroke="#6f42c1" stroke-width="4" stroke-dasharray="5,5" />
-                </svg>
-            </div>
-            <div class="painel-resultado" style="color: #6f42c1; border-color: #6f42c1;">
-                Para achar o perímetro, calcule: <br><span id="contaQuadrado" style="font-size: 18px;">4 + 4 + 4 + 4</span>
-            </div>
-        </div>
-        <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q9', 'A', this)">A) 8 metros</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q9', 'B', this)">B) 16 metros</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q9', 'C', this)">C) 20 metros</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Q10: O canteiro da praça tem formato de um triângulo. As medidas dos três lados são: 3 metros, 4 metros e 5 metros. Quantos metros de meio-fio contornam esse canteiro?</h3>
-        <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Laboratório de Contorno (Triângulo)</span>
-            <label>Lado 1: <span id="valTri1">3</span>m</label>
-            <input type="range" id="sliderTri1" min="1" max="8" value="3" oninput="calcularTriangulo()">
-            <label>Lado 2: <span id="valTri2">4</span>m</label>
-            <input type="range" id="sliderTri2" min="1" max="8" value="4" oninput="calcularTriangulo()">
-            <label>Lado 3: <span id="valTri3">5</span>m</label>
-            <input type="range" id="sliderTri3" min="1" max="8" value="5" oninput="calcularTriangulo()">
-            
-            <div class="container-figura" style="height: 140px;">
-                <svg width="120" height="100">
-                    <polygon points="60,10 10,90 110,90" fill="none" stroke="#d93025" stroke-width="4" stroke-dasharray="5,5" />
-                </svg>
-            </div>
-            <div class="painel-resultado" style="background: #fce8e6; color: #d93025; border-color: #d93025;">
-                Para achar o perímetro, calcule: <br><span id="contaTriangulo" style="font-size: 18px;">3 + 4 + 5</span>
-            </div>
-        </div>
-        <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q10', 'A', this)">A) 7 metros</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q10', 'B', this)">B) 12 metros</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q10', 'C', this)">C) 15 metros</button>
         </div>
     </div>
 
@@ -255,7 +221,7 @@
     </div>
 
     <script>
-        const respostasAluno = { q1: '', q2: '', q3: '', q4: '', q5: '', q6: '', q7: '', q8: '', q9: '', q10: '' };
+        const respostasAluno = { q1: '', q2: '', q3: '', q5: '', q6: '', q8: '' };
 
         function selecionarOpcao(questao, alternativa, elemento) {
             respostasAluno[questao] = alternativa;
@@ -264,53 +230,76 @@
             elemento.classList.add('selecionada');
         }
 
-        // Funções do Módulo 1 (Auxílio Passo a Passo)
+        // --- Simuladores de Porcentagem ---
+        
+        // Q1: Desconto (Valor Original -> Novo Valor)
         function calcQ1() {
-            let pct = document.getElementById("sliderQ1").value;
-            document.getElementById("valQ1").innerText = pct;
-            document.getElementById("lblQ1").innerText = pct;
-            document.getElementById("multQ1").innerText = pct;
+            let prod = parseFloat(document.getElementById("sliderQ1_prod").value);
+            let taxa = parseFloat(document.getElementById("sliderQ1_taxa").value);
+            
+            document.getElementById("valQ1_prod").innerText = prod;
+            document.getElementById("valQ1_taxa").innerText = taxa;
+            
+            let desconto = (prod * taxa) / 100;
+            let final = prod - desconto;
+            
+            document.getElementById("resQ1_desc").innerText = desconto.toFixed(2).replace('.', ',');
+            document.getElementById("resQ1_final").innerText = final.toFixed(2).replace('.', ',');
         }
+
+        // Q2: Descobrir a Porcentagem (Valor + Desconto Reais -> Taxa %)
         function calcQ2() {
-            let pct = document.getElementById("sliderQ2").value;
-            document.getElementById("valQ2").innerText = pct;
-            document.getElementById("lblQ2").innerText = pct;
-            document.getElementById("multQ2").innerText = pct;
+            let prod = parseFloat(document.getElementById("sliderQ2_prod").value);
+            let desconto_reais = parseFloat(document.getElementById("sliderQ2_reais").value);
+            
+            // Garantir que o desconto não seja maior que o produto
+            if(desconto_reais > prod) {
+                desconto_reais = prod;
+                document.getElementById("sliderQ2_reais").value = prod;
+            }
+            
+            document.getElementById("valQ2_prod").innerText = prod;
+            document.getElementById("valQ2_reais").innerText = desconto_reais;
+            
+            let taxa = (desconto_reais / prod) * 100;
+            
+            document.getElementById("resQ2_pct").innerText = taxa.toFixed(1).replace('.0', '').replace('.', ',');
         }
+
+        // Q3: Aumento Salarial (Valor Original -> Aumento)
         function calcQ3() {
-            let pct = document.getElementById("sliderQ3").value;
-            document.getElementById("valQ3").innerText = pct;
-            document.getElementById("lblQ3").innerText = pct;
-            document.getElementById("multQ3").innerText = pct;
-        }
-        function calcQ4() {
-            let pct = document.getElementById("sliderQ4").value;
-            document.getElementById("valQ4").innerText = pct;
-            document.getElementById("lblQ4").innerText = pct;
-            document.getElementById("multQ4").innerText = pct;
-        }
-
-        // Funções do Módulo 2 (Auxílio Passo a Passo)
-        function calcQ5() {
-            let meses = document.getElementById("sliderQ5").value;
-            document.getElementById("valQ5").innerText = meses;
-            document.getElementById("lblQ5").innerText = meses;
-            document.getElementById("multQ5").innerText = meses;
-        }
-        function calcQ6() {
-            let meses = document.getElementById("sliderQ6").value;
-            document.getElementById("valQ6").innerText = meses;
-            document.getElementById("lblQ6").innerText = meses;
-            document.getElementById("multQ6").innerText = meses;
-        }
-        function calcQ7() {
-            let meses = document.getElementById("sliderQ7").value;
-            document.getElementById("valQ7").innerText = meses;
-            document.getElementById("lblQ7").innerText = meses;
-            document.getElementById("multQ7").innerText = meses;
+            let prod = parseFloat(document.getElementById("sliderQ3_prod").value);
+            let taxa = parseFloat(document.getElementById("sliderQ3_taxa").value);
+            
+            document.getElementById("valQ3_prod").innerText = prod;
+            document.getElementById("valQ3_taxa").innerText = taxa;
+            
+            let aumento = (prod * taxa) / 100;
+            
+            document.getElementById("resQ3_aumento").innerText = aumento.toFixed(2).replace('.', ',');
         }
 
-        // Funções do Módulo 3
+        // --- Simuladores de Juros Simples ---
+        
+        function calcJuros(id) {
+            let cap = parseFloat(document.getElementById("slider" + id + "_cap").value);
+            let taxa = parseFloat(document.getElementById("slider" + id + "_taxa").value);
+            let tempo = parseFloat(document.getElementById("slider" + id + "_tempo").value);
+            
+            document.getElementById("val" + id + "_cap").innerText = cap;
+            document.getElementById("val" + id + "_taxa").innerText = taxa;
+            document.getElementById("val" + id + "_tempo").innerText = tempo;
+            
+            let juros = cap * (taxa / 100) * tempo;
+            let montante = cap + juros;
+            
+            document.getElementById("res" + id + "_juros").innerText = juros.toFixed(2).replace('.', ',');
+            if(document.getElementById("res" + id + "_total")) {
+                document.getElementById("res" + id + "_total").innerText = montante.toFixed(2).replace('.', ',');
+            }
+        }
+
+        // --- Simuladores Geometria ---
         function calcularRetangulo() {
             let larg = parseInt(document.getElementById("sliderLargura").value);
             let alt = parseInt(document.getElementById("sliderAltura").value);
@@ -324,34 +313,17 @@
             document.getElementById("contaRetangulo").innerText = larg + " + " + larg + " + " + alt + " + " + alt;
         }
 
-        function calcularQuadrado() {
-            let lado = parseInt(document.getElementById("sliderQuadrado").value);
-            document.getElementById("valQuadrado").innerText = lado;
-            
-            let svg = document.getElementById("svgQuadrado");
-            svg.setAttribute("width", lado * 20);
-            svg.setAttribute("height", lado * 20);
-            
-            document.getElementById("contaQuadrado").innerText = lado + " + " + lado + " + " + lado + " + " + lado;
-        }
-
-        function calcularTriangulo() {
-            let l1 = parseInt(document.getElementById("sliderTri1").value);
-            let l2 = parseInt(document.getElementById("sliderTri2").value);
-            let l3 = parseInt(document.getElementById("sliderTri3").value);
-            document.getElementById("valTri1").innerText = l1;
-            document.getElementById("valTri2").innerText = l2;
-            document.getElementById("valTri3").innerText = l3;
-            document.getElementById("contaTriangulo").innerText = l1 + " + " + l2 + " + " + l3;
-        }
-
+        // --- Envio Google Apps Script ---
         function enviarParaPlanilha() {
             const nome = document.getElementById('nomeAluno').value;
             const botao = document.getElementById('btnEnviarPlanilha');
             
             if (!nome) { alert("Por favor, digite seu nome antes de enviar!"); return; }
-            for (let i = 1; i <= 10; i++) {
-                if (!respostasAluno['q' + i]) { alert('Por favor, responda a Questão ' + i + ' antes de enviar!'); return; }
+            
+            // Verifica as questões presentes
+            const questoesPresentes = ['q1', 'q2', 'q3', 'q5', 'q6', 'q8'];
+            for (let q of questoesPresentes) {
+                if (!respostasAluno[q]) { alert('Por favor, responda a Questão ' + q.toUpperCase() + ' antes de enviar!'); return; }
             }
 
             botao.innerText = "Enviando... Aguarde";
@@ -361,7 +333,7 @@
 
             const dadosForm = new URLSearchParams();
             dadosForm.append('nome', nome);
-            for (let i = 1; i <= 10; i++) { dadosForm.append('q'+i, respostasAluno['q'+i]); }
+            for (let q of questoesPresentes) { dadosForm.append(q, respostasAluno[q]); }
 
             fetch(urlPlanilha, { method: 'POST', body: dadosForm, mode: 'no-cors' })
             .then(() => {
