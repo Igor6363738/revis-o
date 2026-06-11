@@ -16,6 +16,7 @@
         h3 { color: #2c3e50; font-size: 15px; margin-top: 0; line-height: 1.5; font-weight: 600; }
         .manipulacao { background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
         .manipulacao-title { font-size: 13px; font-weight: bold; color: #495057; text-transform: uppercase; margin-bottom: 10px; display: block; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        .dica-logica { font-size: 13px; color: #d93025; background: #fce8e6; padding: 8px; border-radius: 4px; margin-top: 10px; font-weight: 500; }
         label { font-size: 14px; color: #555; }
         input[type="range"] { width: 100%; margin: 10px 0 15px 0; accent-color: #1a73e8; }
         .painel-resultado { background: #e8f0fe; padding: 12px; border-radius: 6px; font-weight: bold; text-align: center; color: #1a73e8; font-size: 15px; border: 1px dashed #1a73e8; }
@@ -26,7 +27,6 @@
         .form-envio { background: #e8f0fe; border: 2px solid #1a73e8; border-radius: 12px; padding: 20px; margin-top: 40px; margin-bottom: 40px; }
         .form-envio input[type="text"] { width: 100%; padding: 12px; margin-top: 8px; margin-bottom: 20px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
         .btn-enviar { background-color: #1a73e8; color: white; border: none; padding: 16px; width: 100%; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(26,115,232,0.3); }
-        .btn-enviar:active { transform: translateY(2px); }
     </style>
 </head>
 <body>
@@ -46,10 +46,11 @@
     <div class="card">
         <h3>Q1: Dona Ana quer comprar uma geladeira de R$ 2.000,00. A loja oferece 10% de desconto à vista. Quantos reais ela terá de abatimento no valor final?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Simulador de Desconto</span>
-            <label>Ajuste o Desconto: <span id="valQ1">10</span>%</label>
+            <span class="manipulacao-title">🔧 Calculadora Auxiliar (Base R$ 1.000)</span>
+            <label>Ajuste a Porcentagem: <span id="valQ1">10</span>%</label>
             <input type="range" id="sliderQ1" min="0" max="50" step="5" value="10" oninput="calcQ1()">
-            <div class="painel-resultado">Desconto = R$ <span id="resQ1">200,00</span></div>
+            <div class="painel-resultado">Desconto em R$ 1.000,00 = R$ <span id="resQ1">100,00</span></div>
+            <div class="dica-logica">💡 Dica: O valor acima é para R$ 1.000. Como a geladeira custa o DOBRO disso, o que você deve fazer com o desconto?</div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q1', 'A', this)">A) R$ 10,00</button>
@@ -61,10 +62,11 @@
     <div class="card">
         <h3>Q2: Carlos viu uma calça jeans que custa R$ 120,00. Se ele pagar no PIX, ganha 15% de desconto. Qual será a economia dele em reais?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Simulador de PIX</span>
-            <label>Ajuste o Desconto: <span id="valQ2">15</span>%</label>
+            <span class="manipulacao-title">🔧 Calculadora Auxiliar (Base R$ 100)</span>
+            <label>Ajuste a Porcentagem: <span id="valQ2">15</span>%</label>
             <input type="range" id="sliderQ2" min="0" max="30" step="5" value="15" oninput="calcQ2()">
-            <div class="painel-resultado">Economia = R$ <span id="resQ2">18,00</span></div>
+            <div class="painel-resultado">Desconto em R$ 100,00 = R$ <span id="resQ2">15,00</span></div>
+            <div class="dica-logica">💡 Dica: Se para R$ 100 o desconto é esse, para R$ 120,00 o desconto será só um pouquinho maior. Qual alternativa faz mais sentido?</div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q2', 'A', this)">A) R$ 15,00</button>
@@ -76,10 +78,11 @@
     <div class="card">
         <h3>Q3: Uma empresa concedeu um aumento salarial de 8% para todos os funcionários. Se um trabalhador ganha R$ 1.500,00, de quanto será o aumento no salário dele?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Simulador de Aumento</span>
-            <label>Ajuste o Aumento: <span id="valQ3">8</span>%</label>
-            <input type="range" id="sliderQ3" min="0" max="20" step="2" value="8" oninput="calcQ3()">
-            <div class="painel-resultado">Aumento = R$ <span id="resQ3">120,00</span></div>
+            <span class="manipulacao-title">🔧 Calculadora de Aumento (Taxa fixa de 8%)</span>
+            <label>Teste com salários redondos: R$ <span id="valQ3">1000</span>,00</label>
+            <input type="range" id="sliderQ3" min="500" max="2000" step="500" value="1000" oninput="calcQ3()">
+            <div class="painel-resultado">Aumento de 8% = R$ <span id="resQ3">80,00</span></div>
+            <div class="dica-logica">💡 Dica: Descubra o aumento para R$ 1.000 e depois para R$ 500. Some os dois resultados para descobrir o aumento de R$ 1.500!</div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q3', 'A', this)">A) R$ 80,00</button>
@@ -91,10 +94,11 @@
     <div class="card">
         <h3>Q4: Fátima fez compras de supermercado no valor de R$ 400,00. O aplicativo do cartão devolve 5% do valor em dinheiro (cashback). Quanto ela receberá de volta?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Simulador de Cashback</span>
-            <label>Ajuste o Cashback: <span id="valQ4">5</span>%</label>
-            <input type="range" id="sliderQ4" min="0" max="20" step="1" value="5" oninput="calcQ4()">
-            <div class="painel-resultado">Dinheiro de Volta = R$ <span id="resQ4">20,00</span></div>
+            <span class="manipulacao-title">🔧 Calculadora de Cashback (Base R$ 100)</span>
+            <label>Taxa de Cashback: <span id="valQ4">5</span>%</label>
+            <input type="range" id="sliderQ4" min="1" max="10" step="1" value="5" oninput="calcQ4()">
+            <div class="painel-resultado">Volta em uma nota de R$ 100 = R$ <span id="resQ4">5,00</span></div>
+            <div class="dica-logica">💡 Dica: Esse simulador mostra quanto volta a cada nota de R$ 100. Como a compra foi de R$ 400, multiplique esse valor por 4!</div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q4', 'A', this)">A) R$ 5,00</button>
@@ -114,10 +118,11 @@
     <div class="card">
         <h3>Q5: Seu João tem uma dívida de R$ 500,00 que atrasou por 2 meses. A loja cobra 3% de juros ao mês. Qual o valor total apenas dos juros gerados?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Simulador de Tempo (Juros de 3% a.m.)</span>
+            <span class="manipulacao-title">🔧 Simulador de Tempo (Dívida de apenas R$ 100)</span>
             <label>Meses de Atraso: <span id="valQ5">2</span> mês(es)</label>
-            <input type="range" id="sliderQ5" min="1" max="10" value="2" oninput="calcQ5()">
-            <div class="painel-resultado">Total de Juros = R$ <span id="resQ5">30,00</span></div>
+            <input type="range" id="sliderQ5" min="1" max="5" value="2" oninput="calcQ5()">
+            <div class="painel-resultado">Juros para R$ 100,00 = R$ <span id="resQ5">6,00</span></div>
+            <div class="dica-logica">💡 Dica: O valor simulado é para uma dívida de apenas R$ 100. A dívida do Seu João (R$ 500) é 5 vezes maior. Multiplique o resultado por 5!</div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q5', 'A', this)">A) R$ 15,00</button>
@@ -129,10 +134,11 @@
     <div class="card">
         <h3>Q6: Um boleto de luz de R$ 200,00 ficou atrasado por 3 meses. A multa é de juros simples de 2% ao mês. Quanto o morador pagará de juros?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Simulador de Tempo (Juros de 2% a.m.)</span>
-            <label>Meses de Atraso: <span id="valQ6">3</span> mês(es)</label>
-            <input type="range" id="sliderQ6" min="1" max="6" value="3" oninput="calcQ6()">
-            <div class="painel-resultado">Total de Juros = R$ <span id="resQ6">12,00</span></div>
+            <span class="manipulacao-title">🔧 Simulador de Dívida (Tempo fixo de 1 Mês)</span>
+            <label>Valor do Boleto: R$ <span id="valQ6">200</span>,00</label>
+            <input type="range" id="sliderQ6" min="100" max="500" step="100" value="200" oninput="calcQ6()">
+            <div class="painel-resultado">Juros de apenas 1 MÊS = R$ <span id="resQ6">4,00</span></div>
+            <div class="dica-logica">💡 Dica: Esse simulador calcula a multa de APENAS UM MÊS. Como o morador atrasou 3 meses, o que você deve fazer com esse valor?</div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q6', 'A', this)">A) R$ 4,00</button>
@@ -144,10 +150,11 @@
     <div class="card">
         <h3>Q7: Mariana pegou R$ 1.000,00 emprestados por 4 meses, com taxa de 5% ao mês. No final do prazo, quanto ela terá pago APENAS de juros?</h3>
         <div class="manipulacao">
-            <span class="manipulacao-title">🔧 Simulador de Empréstimo (Juros de 5% a.m.)</span>
+            <span class="manipulacao-title">🔧 Simulador de Empréstimo (Apenas R$ 100)</span>
             <label>Prazo do Empréstimo: <span id="valQ7">4</span> mês(es)</label>
-            <input type="range" id="sliderQ7" min="1" max="12" value="4" oninput="calcQ7()">
-            <div class="painel-resultado">Total de Juros = R$ <span id="resQ7">200,00</span></div>
+            <input type="range" id="sliderQ7" min="1" max="6" value="4" oninput="calcQ7()">
+            <div class="painel-resultado">Juros para empréstimo de R$ 100,00 = R$ <span id="resQ7">20,00</span></div>
+            <div class="dica-logica">💡 Dica: O simulador usou R$ 100. Mariana pegou R$ 1.000 (que é 10 vezes mais). Multiplique o resultado do simulador por 10!</div>
         </div>
         <div class="alternativas">
             <button class="btn-opcao" onclick="selecionarOpcao('q7', 'A', this)">A) R$ 50,00</button>
@@ -174,7 +181,7 @@
             <input type="range" id="sliderAltura" min="1" max="5" value="1" oninput="calcularRetangulo()">
             
             <div class="container-figura" style="height: 140px;">
-                <svg id="svgRetangulo" width="80" height="40">
+                <svg id="svgRetangulo" width="60" height="30">
                     <rect width="100%" height="100%" fill="none" stroke="#28a745" stroke-width="4" stroke-dasharray="5,5" />
                 </svg>
             </div>
@@ -260,43 +267,50 @@
             elemento.classList.add('selecionada');
         }
 
-        // Funções do Módulo 1
+        // Funções do Módulo 1 (Lógica de Proporção)
         function calcQ1() {
-            let v = document.getElementById("sliderQ1").value;
-            document.getElementById("valQ1").innerText = v;
-            document.getElementById("resQ1").innerText = ((v / 100) * 2000).toFixed(2).replace('.', ',');
+            let pct = document.getElementById("sliderQ1").value;
+            document.getElementById("valQ1").innerText = pct;
+            // Calcula com base em R$ 1000
+            document.getElementById("resQ1").innerText = ((pct / 100) * 1000).toFixed(2).replace('.', ',');
         }
         function calcQ2() {
-            let v = document.getElementById("sliderQ2").value;
-            document.getElementById("valQ2").innerText = v;
-            document.getElementById("resQ2").innerText = ((v / 100) * 120).toFixed(2).replace('.', ',');
+            let pct = document.getElementById("sliderQ2").value;
+            document.getElementById("valQ2").innerText = pct;
+            // Calcula com base em R$ 100
+            document.getElementById("resQ2").innerText = ((pct / 100) * 100).toFixed(2).replace('.', ',');
         }
         function calcQ3() {
-            let v = document.getElementById("sliderQ3").value;
-            document.getElementById("valQ3").innerText = v;
-            document.getElementById("resQ3").innerText = ((v / 100) * 1500).toFixed(2).replace('.', ',');
+            let val = document.getElementById("sliderQ3").value;
+            document.getElementById("valQ3").innerText = val;
+            // Calcula 8% em cima do salário variável
+            document.getElementById("resQ3").innerText = ((8 / 100) * val).toFixed(2).replace('.', ',');
         }
         function calcQ4() {
-            let v = document.getElementById("sliderQ4").value;
-            document.getElementById("valQ4").innerText = v;
-            document.getElementById("resQ4").innerText = ((v / 100) * 400).toFixed(2).replace('.', ',');
+            let pct = document.getElementById("sliderQ4").value;
+            document.getElementById("valQ4").innerText = pct;
+            // Calcula com base em R$ 100
+            document.getElementById("resQ4").innerText = ((pct / 100) * 100).toFixed(2).replace('.', ',');
         }
 
-        // Funções do Módulo 2
+        // Funções do Módulo 2 (Lógica de Proporção)
         function calcQ5() {
-            let m = document.getElementById("sliderQ5").value;
-            document.getElementById("valQ5").innerText = m;
-            document.getElementById("resQ5").innerText = (500 * 0.03 * m).toFixed(2).replace('.', ',');
+            let meses = document.getElementById("sliderQ5").value;
+            document.getElementById("valQ5").innerText = meses;
+            // Juros de 3% a.m. para apenas R$ 100
+            document.getElementById("resQ5").innerText = (100 * 0.03 * meses).toFixed(2).replace('.', ',');
         }
         function calcQ6() {
-            let m = document.getElementById("sliderQ6").value;
-            document.getElementById("valQ6").innerText = m;
-            document.getElementById("resQ6").innerText = (200 * 0.02 * m).toFixed(2).replace('.', ',');
+            let valor = document.getElementById("sliderQ6").value;
+            document.getElementById("valQ6").innerText = valor;
+            // Juros de 2% a.m. para apenas 1 mês no valor variável
+            document.getElementById("resQ6").innerText = (valor * 0.02 * 1).toFixed(2).replace('.', ',');
         }
         function calcQ7() {
-            let m = document.getElementById("sliderQ7").value;
-            document.getElementById("valQ7").innerText = m;
-            document.getElementById("resQ7").innerText = (1000 * 0.05 * m).toFixed(2).replace('.', ',');
+            let meses = document.getElementById("sliderQ7").value;
+            document.getElementById("valQ7").innerText = meses;
+            // Juros de 5% a.m. para apenas R$ 100
+            document.getElementById("resQ7").innerText = (100 * 0.05 * meses).toFixed(2).replace('.', ',');
         }
 
         // Funções do Módulo 3
