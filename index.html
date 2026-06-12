@@ -52,7 +52,7 @@
     
     <div class="revisao-card">
         <h4>📚 Dica de Ouro</h4>
-       
+        <p>A forma mais fácil de calcular porcentagem é encontrar o valor de <strong>1%</strong> (dividindo o total por 100) e depois multiplicar pela porcentagem que você quer!</p>
         <div class="formula">Fórmula: Valor = (Taxa ÷ 100) × Total</div>
     </div>
 
@@ -132,14 +132,15 @@
 
     <div class="revisao-card">
         <h4>📚 Dica de Ouro</h4>
-        <p>Juros simples é como um "aluguel" do dinheiro. Calcule quanto custa 1 mês e multiplique pelo tempo de atraso!</p>
-        <div class="formula">Fórmula: Juros = Capital × (Taxa ÷ 100) × Tempo</div>
+        <p>Juros simples é como um "aluguel" do dinheiro. Calcule quanto custa 1 mês e multiplique pelo tempo. Se a pergunta pedir o <strong>Valor Total (Montante)</strong>, não esqueça de somar os juros com a dívida inicial!</p>
+        <div class="formula">Juros = Capital × (Taxa ÷ 100) × Tempo</div>
+        <div class="formula" style="border-color: #1a73e8; color: #1a73e8;">Valor Total = Capital + Juros</div>
     </div>
 
     <div class="card">
-        <h3>Q5: Seu João tem uma dívida de R$ 500,00 que atrasou por 2 meses. A loja cobra 3% de juros ao mês. Qual o valor total APENAS dos juros gerados?</h3>
+        <h3>Q5: Seu João tem uma dívida de R$ 500,00 que atrasou por 2 meses. A loja cobra 3% de juros ao mês. Qual o valor APENAS dos juros gerados?</h3>
         <div class="assistente">
-            <div class="assistente-title">🧠 Assistente de Juros</div>
+            <div class="assistente-title">🧠 Assistente de Juros (Apenas Juros)</div>
             <div class="input-group">
                 <input type="number" id="cQ5" placeholder="Dívida (Capital)">
                 <input type="number" id="iQ5" placeholder="Taxa %">
@@ -156,40 +157,40 @@
     </div>
 
     <div class="card">
-        <h3>Q6: Um boleto de luz de R$ 200,00 ficou atrasado por 3 meses. A multa é de juros simples de 2% ao mês. Quanto o morador pagará APENAS de juros?</h3>
+        <h3>Q6: Um boleto de luz de R$ 200,00 ficou atrasado por 3 meses. A multa é de juros simples de 2% ao mês. Qual será o VALOR TOTAL que o morador pagará no final (boleto + juros)?</h3>
         <div class="assistente">
-            <div class="assistente-title">🧠 Assistente de Juros</div>
+            <div class="assistente-title">🧠 Assistente de Juros (Valor Total)</div>
             <div class="input-group">
                 <input type="number" id="cQ6" placeholder="Boleto (Capital)">
                 <input type="number" id="iQ6" placeholder="Taxa %">
                 <input type="number" id="tQ6" placeholder="Meses">
             </div>
-            <button class="btn-armar" onclick="armarJuros('Q6')">Montar o Problema</button>
+            <button class="btn-armar" onclick="armarMontante('Q6')">Montar o Problema</button>
             <div id="contaQ6" class="painel-conta"></div>
         </div>
         <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'A', this)">A) R$ 4,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'B', this)">B) R$ 6,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'C', this)">C) R$ 12,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'A', this)">A) R$ 206,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'B', this)">B) R$ 212,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q6', 'C', this)">C) R$ 224,00</button>
         </div>
     </div>
 
     <div class="card">
-        <h3>Q7: Mariana pegou R$ 1.000,00 emprestados por 4 meses, com taxa de 5% ao mês. No final do prazo, quanto ela terá pago APENAS de juros?</h3>
+        <h3>Q7: Mariana pegou R$ 1.000,00 emprestados por 4 meses, com taxa de 5% ao mês. No final do prazo, qual será o VALOR TOTAL que ela deverá devolver ao banco?</h3>
         <div class="assistente">
-            <div class="assistente-title">🧠 Assistente de Juros</div>
+            <div class="assistente-title">🧠 Assistente de Juros (Valor Total)</div>
             <div class="input-group">
                 <input type="number" id="cQ7" placeholder="Empréstimo (Capital)">
                 <input type="number" id="iQ7" placeholder="Taxa %">
                 <input type="number" id="tQ7" placeholder="Meses">
             </div>
-            <button class="btn-armar" onclick="armarJuros('Q7')">Montar o Problema</button>
+            <button class="btn-armar" onclick="armarMontante('Q7')">Montar o Problema</button>
             <div id="contaQ7" class="painel-conta"></div>
         </div>
         <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'A', this)">A) R$ 50,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'B', this)">B) R$ 200,00</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'C', this)">C) R$ 1.200,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'A', this)">A) R$ 1.050,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'B', this)">B) R$ 1.200,00</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q7', 'C', this)">C) R$ 1.400,00</button>
         </div>
     </div>
 
@@ -202,32 +203,32 @@
     </div>
 
     <div class="card">
-        <h3>Q8: O pedreiro Marcos vai colocar rodapé no contorno de uma pequena sala retangular. A sala tem 2 metros de largura por 1 metro de comprimento. Quantos metros de rodapé ele vai usar no total?</h3>
+        <h3>Q8: O pedreiro Marcos vai colocar rodapé no contorno de uma pequena sala retangular. A sala tem 4 metros de comprimento por 3 metros de largura. Quantos metros de rodapé ele vai usar no total?</h3>
         <div class="assistente">
             <span class="assistente-title">🔧 Laboratório de Contorno (Retângulo)</span>
             <div class="slider-group">
-                <label>Largura: <span><span id="valLargura">2</span>m</span></label>
-                <input type="range" id="sliderLargura" min="1" max="5" value="2" oninput="calcularRetangulo()">
+                <label>Comprimento: <span><span id="valAltura">4</span>m</span></label>
+                <input type="range" id="sliderAltura" min="1" max="8" value="4" oninput="calcularRetangulo()">
             </div>
             <div class="slider-group">
-                <label>Comprimento: <span><span id="valAltura">1</span>m</span></label>
-                <input type="range" id="sliderAltura" min="1" max="5" value="1" oninput="calcularRetangulo()">
+                <label>Largura: <span><span id="valLargura">3</span>m</span></label>
+                <input type="range" id="sliderLargura" min="1" max="8" value="3" oninput="calcularRetangulo()">
             </div>
             
             <div class="container-figura" style="height: 120px;">
-                <svg id="svgRetangulo" width="60" height="30">
+                <svg id="svgRetangulo" width="120" height="90">
                     <rect width="100%" height="100%" fill="none" stroke="#28a745" stroke-width="4" stroke-dasharray="5,5" />
                 </svg>
             </div>
             <div class="painel-conta" style="display: block; text-align: center;">
                 Soma dos 4 lados do Retângulo: <br>
-                <div class="destaque-conta" id="contaRetangulo">2 + 2 + 1 + 1 = ???</div>
+                <div class="destaque-conta" id="contaRetangulo">4 + 4 + 3 + 3 = ???</div>
             </div>
         </div>
         <div class="alternativas">
-            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'A', this)">A) 3 metros</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'B', this)">B) 4 metros</button>
-            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'C', this)">C) 6 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'A', this)">A) 7 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'B', this)">B) 12 metros</button>
+            <button class="btn-opcao" onclick="selecionarOpcao('q8', 'C', this)">C) 14 metros</button>
         </div>
     </div>
 
@@ -375,23 +376,51 @@
                 (${c} ÷ 100) × ${i} = <b>${jurosPorMes}</b> por mês.<br><br>
                 <b>Passo 2 (Juros Totais):</b> Multiplique o valor mensal pela quantidade de meses (${t}).<br>
                 <div class="destaque-conta">${jurosPorMes} × ${t} = ???</div>
-                <br><em>Resolva a multiplicação final!</em>
+                <br><em>Resolva a multiplicação final para descobrir APENAS os juros!</em>
+            `;
+        }
+
+        function armarMontante(id) {
+            let c = parseFloat(document.getElementById('c' + id).value);
+            let i = parseFloat(document.getElementById('i' + id).value);
+            let t = parseFloat(document.getElementById('t' + id).value);
+            let painel = document.getElementById('conta' + id);
+            
+            if (!c || !i || !t) {
+                alert("Preencha o Capital (Dívida/Empréstimo), a Taxa e os Meses tirados do texto!");
+                return;
+            }
+
+            let valorUmPorcento = c / 100;
+            let jurosPorMes = valorUmPorcento * i;
+            let jurosTotal = jurosPorMes * t;
+
+            painel.style.display = 'block';
+            painel.innerHTML = `
+                <b>A lógica por trás da fórmula:</b><br><br>
+                <b>Passo 1 (Juros de 1 mês):</b> Vamos calcular ${i}% de ${c}.<br>
+                (${c} ÷ 100) × ${i} = <b>${jurosPorMes}</b> por mês.<br><br>
+                <b>Passo 2 (Juros Totais):</b> Multiplique pelo tempo de atraso (${t} meses).<br>
+                ${jurosPorMes} × ${t} = <b>${jurosTotal}</b> (Apenas os Juros).<br><br>
+                <b>Passo 3 (Valor Total):</b> Para saber o total a pagar, some o valor original (Capital) com os Juros!<br>
+                <div class="destaque-conta">${c} + ${jurosTotal} = ???</div>
+                <br><em>Resolva a soma para achar o valor total final!</em>
             `;
         }
 
         // --- Funções dos Sliders (Módulo 3) ---
 
         function calcularRetangulo() {
-            let larg = parseInt(document.getElementById("sliderLargura").value);
             let alt = parseInt(document.getElementById("sliderAltura").value);
-            document.getElementById("valLargura").innerText = larg;
+            let larg = parseInt(document.getElementById("sliderLargura").value);
             document.getElementById("valAltura").innerText = alt;
+            document.getElementById("valLargura").innerText = larg;
             
             let svg = document.getElementById("svgRetangulo");
-            svg.setAttribute("width", larg * 30);
-            svg.setAttribute("height", alt * 30);
+            svg.setAttribute("width", alt * 30);
+            svg.setAttribute("height", larg * 30);
             
-            document.getElementById("contaRetangulo").innerText = larg + " + " + larg + " + " + alt + " + " + alt + " = ???";
+            document.getElementById("contaRetangulo").innerText = alt + " + " + alt + " + " + larg + " + " + larg + " = ???";
         }
 
         function calcularQuadrado() {
